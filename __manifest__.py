@@ -3,8 +3,7 @@
     'name': "proyectos",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Bienvenido, esta es tu aplicacion para hacer lo que quieras",
 
     'description': """
        La mejor aplicacion del mundo
