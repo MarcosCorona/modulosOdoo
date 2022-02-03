@@ -16,6 +16,8 @@
 #     def _value_pc(self):
 #         for record in self:
 #             record.value2 = float(record.value) / 100
+
+#Comentario
 from odoo import models ,fields, api
 
 class departamento(models.Model):
@@ -30,11 +32,11 @@ class empleado(models.model):
 	_description = 'Define los atributos de un empleado'
 	 
 	#atributos
-	dniEmpleado = fields.Char(string = 'Dni ',requierd = True)
-	nombreEmpleado = fields.Char(string = 'Nombre ',requierd = True)
-	fechaNacimiento = fields.Date(string = 'Fecha Nacimiento',requierd = True, default = fields.Date.today())
-	direccionEmpleado = fields.Char(string = 'Direccion ',requierd = True)
-	telefonoEmpleado = fields.Char(string = 'Telefono ',requierd = True)
+	dniEmpleado = fields.Char(string = 'Dni ',required = True)
+	nombreEmpleado = fields.Char(string = 'Nombre ',required = True)
+	fechaNacimiento = fields.Date(string = 'Fecha Nacimiento',required = True, default = fields.Date.today())
+	direccionEmpleado = fields.Char(string = 'Direccion ',required = True)
+	telefonoEmpleado = fields.Char(string = 'Telefono ',required = True)
 
 class proyecto(models.Model)
 	_name = 'proyectos.proyecto'
@@ -42,8 +44,8 @@ class proyecto(models.Model)
 
 	#atributos
 	nombreProyecto = fields.Char(string = 'Nombre proyecto',required = True)
-	tipoProyecto = fields.Selection(string = 'Tipo proyecto',selection =[('f','Front-End'),('b','Back-end')],help='Tipo de proyecto al que está destinado')
-	ciudadProyecto = fields.Char(string='Ciudad')
-	descripcionProyecto = fields.Text(string ='Descripcion proyecto')
+	tipoProyecto = fields.Selection(string = 'Tipo proyecto',selection =[('f','Front-End'),('b','Back-end')],help='Tipo de proyecto al que estï¿½ destinado')
+	ciudadProyecto = fields.Char(string='Ciudad',required = True)
+	descripcionProyecto = fields.Text(string ='Descripcion proyecto',required = True)
 
 	
