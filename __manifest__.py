@@ -7,7 +7,7 @@
         subtitle on modules listing or apps.openerp.com""",
 
     'description': """
-        Long description of module's purpose
+       La mejor aplicacion del mundo
     """,
 
     'author': "My Company",
@@ -32,4 +32,5 @@
     'demo': [
         'demo/demo.xml',
     ],
+    'application':True ,
 }
