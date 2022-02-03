@@ -3,7 +3,7 @@
     'name': "proyectos",
 
     'summary': """
-        Bienvenido, esta es tu aplicacion para hacer lo que quieras",
+        Bienvenido a la mejor aplicacion del mundo""",
 
     'description': """
        La mejor aplicacion del mundo
