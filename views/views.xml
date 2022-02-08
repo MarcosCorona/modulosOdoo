@@ -59,7 +59,7 @@
 		<!-- VISTA EMPLEADOS -->
 		<record model="ir.ui.view" id="proyectos.empleado_list_view">
 			<field name="name">proyectos.empleado.view.tree</field>
-			<field name="model">proyectos.proyectos.empleado</field>
+			<field name="model">proyectos.empleado</field>
 			<field name="arch" type="xml">
 				<tree>
 					<field name="dniEmpleado"/>
