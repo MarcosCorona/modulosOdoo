@@ -82,7 +82,7 @@
 				</tree>
 			</field>
 		</record>
-	</data>
+	
 
 	<!-- VISTA DEPARTAMENTO -->
 	<record model="ir.ui.view" id="proyectos.proyecto_list_view">
@@ -122,5 +122,5 @@
 	<menuitem name="Empleados" id="proyectos.empleados_menu" parent="proyectos.menu_root" action="proyectos.empleado_action_window"/>
 	<menuitem name="Departamento" id="proyectos.departamento_menu" parent="proyectos.menu_root" action="proyectos.departamento_action_window"/>
 	<menuitem name="Proyectos" id="proyectos.proyecto_menu" parent="proyectos.menu_root" action="proyectos.proyecto_action_window"/>
-
+	</data>
 </odoo>
