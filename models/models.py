@@ -41,10 +41,19 @@ class empleado(models.Model):
     telefonoEmpleado = fields.Char(string='Telefono', requiered=True)
     edad = fields.Integer('Edad', compute='getEdad')
 
-    @api.depends('fechaNacimiento')
-    def getEdad(self):
+   @api.depends('fechaNacimiento')
+    def _getEdad(self):
+        hoy = date.today()
         for empleado in self:
-            empleado.edad = 0
+            empleado.edad = relativedelta(hoy, empleado.fechaNacimiento).years
+
+    @api.constrains('dniEmpleado')
+    def _checkDNI(self):
+        for empleado in self:
+            if (len(empleado.dniEmpleado) > 9 ):
+                raise exceptions.ValidationError("El DNI no puede ser superior 9 caracteres")
+            if (len(empleado.dniEmpleado) < 9):
+                raise exceptions.ValidationError("El DNI no puede tener menos de 9 caracteres")
     
     #relaciones entre tablas
     departamento_id = fields.Many2one('proyectos.departamento', string='Empleados')
@@ -65,7 +74,15 @@ class proyecto(models.Model):
     
     #Relación entre tablas
     empleado_ids = fields.Many2many('proyectos.empleado', string='Empleados')
-
+    
+    @api.constrains('fechaInicio')
+      def _checkFechaInicio(self):
+        hoy = date.today()
+        for proyecto in self:
+            proyecto.fechaInicio
+            dias = relativedelta(hoy, proyecto.fechaInicio).days
+            if (dias < 0):
+                raise exceptions.ValidationError("La fecha no puede ser anterior a hoy")
 
 
 
