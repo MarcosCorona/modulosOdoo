@@ -41,7 +41,7 @@ class empleado(models.Model):
     fechaNacimiento = fields.Date(string='Fecha nacimiento', requiered=True, default = fields.date.today())
     direccionEmpleado = fields.Char(string='Dirección', requiered=True)
     telefonoEmpleado = fields.Char(string='Telefono', requiered=True)
-    edad = fields.Integer('Edad', compute='getEdad')
+    edad = fields.Integer('Edad', compute='_getEdad')
 
    @api.depends('fechaNacimiento')
     def _getEdad(self):
