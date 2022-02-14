@@ -71,6 +71,7 @@ class proyecto(models.Model):
     
     #Relación entre tablas
     empleado_ids = fields.Many2many('proyectos.empleado', string='Empleados')
+
     @api.constrains('fechaInicio')
     def _checkFechaInicio(self):
         hoy = date.today()
@@ -86,7 +87,7 @@ class proyecto(models.Model):
             empleado.edad = relativedelta(hoy, empleado.fechaNacimiento).years
     @api.constrains('fechaFin')
     def _checkFechaInicio(self):
-        hoy = proyecto.fechaInicio
+        hoy = date.today()
         for proyecto in self:
             proyecto.fechaFin
             dias = relativedelta(hoy, proyecto.fechaFin).days
