@@ -65,7 +65,7 @@ class proyecto(models.Model):
     empleado_ids = fields.Many2many('proyectos.empleado', string='Empleados')
 
     @api.constrains('fechaInicio')
-    def _checkFechaInicio(self):
+      def _checkFechaInicio(self):
         hoy = date.today()
         for proyecto in self:
             proyecto.fechaInicio
@@ -74,13 +74,13 @@ class proyecto(models.Model):
                 raise exceptions.ValidationError("La fecha no puede ser anterior a hoy")
 
     @api.depends('fechaNacimiento')
-    def _getEdad(self):
+      def _getEdad(self):
         hoy = date.today()
         for empleado in self:
             empleado.edad = relativedelta(hoy, empleado.fechaNacimiento).years
 
      @api.constrains('fechaFin')
-    def _checkFechaInicio(self):
+       def _checkFechaInicio(self):
         hoy = date.today()
         for proyecto in self:
             proyecto.fechaFin
