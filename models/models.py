@@ -81,7 +81,7 @@ class proyecto(models.Model):
             if (dias < 0):
                 raise exceptions.ValidationError("La fecha no puede ser anterior a hoy")
 
-    @api.constrains('fechaNacimiento')
+    @api.depends('fechaNacimiento')
       def _getEdad(self):
         hoy = date.today()
         for empleado in self:
