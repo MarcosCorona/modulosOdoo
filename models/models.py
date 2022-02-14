@@ -43,12 +43,6 @@ class empleado(models.Model):
     telefonoEmpleado = fields.Char(string='Telefono', requiered=True)
     edad = fields.Integer('Edad', compute='_getEdad')
 
-   @api.depends('fechaNacimiento')
-    def _getEdad(self):
-        hoy = date.today()
-        for empleado in self:
-            empleado.edad = relativedelta(hoy, empleado.fechaNacimiento).years
-
 
     
     #relaciones entre tablas
