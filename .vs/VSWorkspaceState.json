@@ -3,7 +3,9 @@
     "",
     "\\controllers",
     "\\models",
+    "\\security",
     "\\views"
   ],
+  "SelectedNode": "\\models\\models.py",
   "PreviewInSolutionExplorer": false
 }
