@@ -50,13 +50,7 @@ class empleado(models.Model):
     departamento_id = fields.Many2one('proyectos.departamento', string='Empleados')
     proyecto_ids = fields.Many2many('proyectos.proyecto', string='Proyectos')
 
-    @api.constrains('dniEmpleado')
-    def _checkDNI(self):
-        for empleado in self:
-            if (len(empleado.dniEmpleado) > 9 ):
-                raise exceptions.ValidationError("El DNI no puede ser superior 9 caracteres")
-            if (len(empleado.dniEmpleado) < 9):
-                raise exceptions.ValidationError("El DNI no puede tener menos de 9 caracteres")
+   
 
 class proyecto(models.Model):
     _name = 'proyectos.proyecto'
