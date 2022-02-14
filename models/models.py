@@ -43,6 +43,19 @@ class empleado(models.Model):
     telefonoEmpleado = fields.Char(string='Telefono', requiered=True)
     edad = fields.Integer('Edad', compute='_getEdad')
 
+    @api.depends('fechaNacimiento')
+    def _getEdad(self):
+        hoy = date.today()
+        for empleado in self:
+            empleado.edad = relativedelta(hoy, empleado.fechaNacimiento).years
+
+    @api.constrains('dniEmpleado')
+    def _checkDNI(self):
+        for empleado in self:
+            if (len(empleado.dniEmpleado) > 9 ):
+                raise exceptions.ValidationError("El DNI no puede ser superior 9 caracteres")
+            if (len(empleado.dniEmpleado) < 9):
+                raise exceptions.ValidationError("El DNI no puede tener menos de 9 caracteres")
   
     #relaciones entre tablas
     departamento_id = fields.Many2one('proyectos.departamento', string='Empleados')
