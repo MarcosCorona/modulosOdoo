@@ -18,7 +18,9 @@
 #             record.value2 = float(record.value) / 100
 
 #Comentario
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions
+from datetime import date
+from dateutil.relativedelta import *
 
 class departamento(models.Model):
     _name = 'proyectos.departamento'
