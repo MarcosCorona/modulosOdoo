@@ -87,14 +87,7 @@ class proyecto(models.Model):
         for empleado in self:
             empleado.edad = relativedelta(hoy, empleado.fechaNacimiento).years
 
-     @api.constrains('fechaFin')
-       def _checkFechaInicio(self):
-        hoy = date.today()
-        for proyecto in self:
-            proyecto.fechaFin
-            dias = relativedelta(hoy, proyecto.fechaFin).days
-            if (dias < 0):
-                raise exceptions.ValidationError("La fecha no puede ser anterior a la fecha fin")
+
 
 
 
