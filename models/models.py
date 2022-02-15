@@ -82,12 +82,7 @@ class proyecto(models.Model):
             if (dias > 0):
                 raise exceptions.ValidationError("La fecha no puede ser anterior a hoy")
             
-    @api.constrains('fechaFin')
-      def _checkFechaFin(self):
-        for proyecto in self:
-            if(proyecto.fechaFin < proyecto.fechaInicio):
-                raise exceptions.ValidationError("La fecha de finalizacion no puede ser inferior a la de inicio")
-
+    
 
     #Relación entre tablas
     empleado_ids = fields.Many2many('proyectos.empleado', string='Empleados')
