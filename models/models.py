@@ -18,6 +18,7 @@
 #             record.value2 = float(record.value) / 100
 
 #Comentario
+import string
 from odoo import models, fields, api, exceptions
 from datetime import date
 from dateutil.relativedelta import *
