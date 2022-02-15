@@ -73,14 +73,20 @@ class proyecto(models.Model):
     fechaInicio = fields.Date(string='Fecha Inicio', required=True)
     fechaFin = fields.Date(string='Fecha Final', required=True)
 
-    @api.constrains('fechaInicio')
-      def _checkFechaInicio(self):
-       hoy = date.today()
-       for proyecto in self:
-          proyecto.fechaInicio
-          dias = relativedelta(hoy, proyecto.fechaInicio).days
-          if (dias > 0):
-            raise exceptions.ValidationError("La fecha no puede ser anterior a hoy")
+  @api.constrains('fechaInicio')
+    def _checkFechaInicio(self):
+        hoy = date.today()
+        for proyecto in self:
+            proyecto.fechaInicio
+            dias = relativedelta(hoy, proyecto.fechaInicio).days
+            if (dias > 0):
+                raise exceptions.ValidationError("La fecha no puede ser anterior a hoy")
+            
+    @api.constrains('fechaFin')
+    def _checkFechaFin(self):
+        for proyecto in self:
+            if(proyecto.fechaFin < proyecto.fechaInicio):
+                raise exceptions.ValidationError("La fecha de finalizacion no puede ser inferior a la de inicio")
 
 
     #Relación entre tablas
